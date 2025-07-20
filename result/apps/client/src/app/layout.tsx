@@ -23,7 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fira_code.className} antialiased`}>{children}</body>
+      <body
+        className={`${fira_code.className} min-h-screen h-full antialiased bg-neutral-950`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
