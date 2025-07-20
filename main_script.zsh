@@ -27,5 +27,3 @@ yt() {
 
   echo "did stuff ✅✅✅"
 }
-
-# 
