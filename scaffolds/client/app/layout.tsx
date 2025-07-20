@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import { Fira_Code } from "next/font/google";
+import { genStoreSSR } from "@/core/store";
+import Providers from "@/features/layout/shells/Providers";
 
 const fira_code = Fira_Code({
   subsets: ["latin"],
@@ -21,12 +23,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const store = genStoreSSR({});
+
   return (
     <html lang="en">
       <body
         className={`${fira_code.className} min-h-screen h-full antialiased bg-neutral-950`}
       >
-        {children}
+        <Providers
+          {...{
+            preloadedState: store.getState(),
+          }}
+        >
+          {children}
+        </Providers>
       </body>
     </html>
   );

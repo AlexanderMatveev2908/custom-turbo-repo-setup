@@ -25,7 +25,7 @@ handle_json(){
   ' sh {} +
 
   jq '.scripts += {
-  "setup-workspace": "yarn workspace @shared/first build && yarn dlx prisma generate --schema=./apps/server/prisma/schema.prisma",
+  "setup-workspace": "yarn workspace @shared/first build",
     "dev": "concurrently -k --kill-others-on-fail -n \"📦 SHARED\",\"⚔️  SERVER\",\"🛠️  CLIENT\" -c magenta,green,blue   \"yarn workspace @shared/first dev\"   \"sleep 1 && yarn workspace server dev\"   \"sleep 2.5 && yarn workspace client dev\"",
     "build": "yarn workspace @shared/first build && yarn dlx prisma generate --schema=./apps/server/prisma/schema.prisma && turbo build --parallel",
     "start": "turbo run start",

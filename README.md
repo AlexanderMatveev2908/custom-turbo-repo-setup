@@ -11,6 +11,8 @@ pwd
 
 should return as result `/home/<your linux username>/scaffolds`.
 
+In scripts like `build` delete commands relative to `prisma` if you use a different `ORM` or you just did not implement tables yet.
+
 ## Info ℹ️
 
 I wrote this script after using Turborepo for the first time in one of my learning projects.
