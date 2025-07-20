@@ -29,6 +29,6 @@ const opt = {
     : {}),
 };
 
-export default fp(async (app: FastifyInstance) => {
+export const envApp = fp(async (app: FastifyInstance) => {
   await app.register(envPlugin, opt);
 });

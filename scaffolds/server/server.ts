@@ -1,9 +1,12 @@
 import { __cg } from "@shared/first/lib/logger.js";
 import fastify from "fastify";
-import env from "./conf/env.js";
 import { router } from "./routes/index.js";
 import { catchErr } from "./middleware/catchErr.js";
 import { decoratorsPlugin } from "./decorators/index.js";
+import { envApp } from "./conf/env.js";
+import { corsPlugin } from "./middleware/cors.js";
+import { cookiePlugin } from "./middleware/cookies.js";
+import { ratePlugin } from "./middleware/rate.js";
 
 const app = fastify({
   logger: {
@@ -27,9 +30,12 @@ process.on("SIGINT", () => {
 
 const start = async () => {
   try {
+    await app.register(envApp);
+    await app.register(cookiePlugin);
     await app.register(decoratorsPlugin);
+    await app.register(ratePlugin);
+    await app.register(corsPlugin);
     await app.register(catchErr);
-    await app.register(env);
     await app.register(router, {
       prefix: "/api/v1",
     });
