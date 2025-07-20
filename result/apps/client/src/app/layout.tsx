@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import { Fira_Code } from "next/font/google";
 import { genStoreSSR } from "@/core/store";
 import Providers from "@/features/layout/shells/Providers";
+import Toast from "@/features/layout/components/Toast/Toast";
 
 const fira_code = Fira_Code({
   subsets: ["latin"],
@@ -35,6 +36,8 @@ export default function RootLayout({
             preloadedState: store.getState(),
           }}
         >
+          <Toast />
+
           {children}
         </Providers>
       </body>

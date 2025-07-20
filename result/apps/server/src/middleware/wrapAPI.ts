@@ -1,9 +1,11 @@
 import { __cg } from "@shared/first/lib/logger.js";
-import { FastifyReply, FastifyRequest } from "fastify";
+import { FastifyReply, FastifyRequest, RouteGenericInterface } from "fastify";
 
 export const wrapAPI =
-  (cbAPI: (req: FastifyRequest, res: FastifyReply) => Promise<any>) =>
-  async (req: FastifyRequest, res: FastifyReply): Promise<void> => {
+  <T extends RouteGenericInterface>(
+    cbAPI: (req: FastifyRequest<T>, res: FastifyReply) => Promise<any>
+  ) =>
+  async (req: FastifyRequest<T>, res: FastifyReply): Promise<void> => {
     try {
       await cbAPI(req, res);
     } catch (err: any) {

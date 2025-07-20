@@ -1,4 +1,6 @@
 prepare_env(){
+  export YARN_ENABLE_IMMUTABLE_INSTALLS=0
+
   sudo corepack enable && \
   corepack prepare yarn@4.9.1 --activate && \
   yarn set version berry && \

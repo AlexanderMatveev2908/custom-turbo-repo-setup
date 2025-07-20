@@ -2,3 +2,88 @@
 .tb {
   @apply border-[3px] border-[whitesmoke];
 }
+
+.link {
+  transition: 0.3s ease-in-out;
+  position: relative;
+  max-width: fit-content;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -3.5px;
+  width: 0%;
+  left: 50%;
+  height: 2px;
+  transition: 0.3s ease-in-out;
+  background-color: var(--white__0);
+}
+.link:hover {
+  text-shadow: 0 0 2.5px var(--white__0), 0 0 5px var(--white__0);
+}
+.link:hover::after {
+  width: 100%;
+  left: 0;
+  box-shadow: 0 0 5px var(--white__0), 0 0 10px var(--white__0);
+}
+
+.btn__app:enabled,
+.el__app {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn__app:enabled:hover,
+.el__app:hover {
+  transform: scale(var(--scale__up));
+}
+
+.btn__app:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.btn__app:enabled:active,
+.el__app:active {
+  transition: 0.15s;
+  transform: scale(0.8);
+}
+
+.z__toast {
+  z-index: 10000;
+}
+
+:root {
+  --white__0: #f5f5f5;
+  --gray__300: #d1d5dc;
+  --green__600: #16a34a;
+  --blue__600: #2563eb;
+  --red__600: #dc2626;
+  --orange__600: #ea580c;
+  --yellow__600: #ca8a04;
+  --neutral__50: #fafafa;
+  --neutral__100: #f5f5f5;
+  --neutral__200: #e5e5e5;
+  --neutral__300: #d4d4d4;
+  --neutral__400: #a3a3a3;
+  --neutral__500: #737373;
+  --neutral__600: #525252;
+  --neutral__700: #404040;
+  --neutral__800: #262626;
+  --neutral__900: #171717;
+  --neutral__950: #0a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  appearance: none;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,10 +1,12 @@
 import { testSlice } from "@/features/test/slices/slice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./api";
+import { toastSlice } from "@/features/layout/components/Toast/slices";
 
 const rootReducer = combineReducers({
   test: testSlice.reducer,
   apiApp: apiSlice.reducer,
+  toast: toastSlice.reducer,
 });
 
 export const genStoreSSR = (

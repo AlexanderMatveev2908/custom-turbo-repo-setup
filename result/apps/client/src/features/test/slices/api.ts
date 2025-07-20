@@ -11,5 +11,13 @@ export const testSliceAPI = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+
+    posHello: builder.mutation<UnwrappedResApiT<void>, { msg: string }>({
+      query: ({ msg }) => ({
+        url: BASE_URL,
+        method: "POST",
+        data: { msg },
+      }),
+    }),
   }),
 });

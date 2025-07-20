@@ -1,0 +1,49 @@
+# === Yarn Berry ===
+# Ignore everything in .yarn except what's needed
+.yarn/*
+!.yarn/patches/
+!.yarn/plugins/
+!.yarn/releases/
+!.yarn/sdks/
+!.yarn/versions/
+!.yarnrc.yml
+
+node_modules/
+
+*.tsbuildinfo
+
+turbo/
+.turbo/
+
+dist/
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+
+# === Editor junk ===
+.vscode/
+.idea/
+*.sw?
+
+# === Build folders ===
+apps/*/.next/
+apps/*/out/
+
+# === Certs / Secrets / etc ===
+*.pem
+*.key
+*.crt
+.env
+.env.*
+
+logger/
+uploads/
+assets/

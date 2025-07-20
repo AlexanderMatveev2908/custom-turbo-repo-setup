@@ -1,15 +1,20 @@
 add_next_to_app(){
 
- rm -rf apps/client/ && \
+ rm -rf apps/client/
+
+export CI=1
+
  yarn dlx create-next-app@latest apps/client \
   --typescript \
   --eslint \
   --tailwind \
   --app \
   --no-turbo \
+  --bundler webpack \
   --src-dir \
   --import-alias="@/*" \
   --no-interactive
+
 
   if [[ ! -f apps/client/package.json ]]; then
   echo '{}' > apps/client/package.json

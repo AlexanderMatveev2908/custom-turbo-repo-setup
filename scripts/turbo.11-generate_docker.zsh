@@ -22,7 +22,7 @@ ENV NEXT_PUBLIC_BACK_URL_DEV=\$NEXT_PUBLIC_BACK_URL_DEV
 ARG NEXT_PUBLIC_BACK_URL
 ENV NEXT_PUBLIC_BACK_URL=\$NEXT_PUBLIC_BACK_URL
 
-RUN yarn install --immutable
+RUN yarn install
 
 RUN yarn turbo build --filter=client...
 
@@ -44,10 +44,9 @@ COPY package.json yarn.lock .yarnrc.yml turbo.json ./
 COPY packages/ ./packages/
 COPY apps/server ./apps/server
 
-RUN yarn install --immutable
+RUN yarn install
 
-RUN yarn dlx prisma generate --schema=./apps/server/prisma/schema.prisma && \
-    yarn turbo build --filter=server...
+RUN yarn turbo build --filter=server...
 
 ENV NODE_PATH=/app/node_modules
 
