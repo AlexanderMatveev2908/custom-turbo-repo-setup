@@ -1,7 +1,7 @@
 add_turbo_json(){
   cat <<EOF > turbo.json
 {
-  "$schema": "https://turborepo.org/schema.json",
+  "\$schema": "https://turborepo.org/schema.json",
   "globalEnv": ["ONLY_DEPLOY_MAIN"],
   "tasks": {
     "dev": {

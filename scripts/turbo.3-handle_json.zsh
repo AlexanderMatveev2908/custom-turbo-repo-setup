@@ -15,6 +15,9 @@ handle_json(){
   append_dep "client"
   append_dep "server"
 
+  jq '.type = "module"' apps/server/package.json > temp.json && mv temp.json apps/server/package.json
+
+
   find . -name package.json -not -path '*/node_modules/*' -exec sh -c '
     for f; do
       jq ".license = \"UNLICENSED\"" "$f" > "$f.tmp" && mv "$f.tmp" "$f"
