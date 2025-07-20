@@ -5,64 +5,7 @@ apps/client/src/app/globals.css
 
 DIR_CLIENT="apps/client/src"
 
-DIRS=(
-  "$DIR_CLIENT/app"
-  "$DIR_CLIENT/core/assets/imgs"
-  "$DIR_CLIENT/core/assets/SVGs"
-  "$DIR_CLIENT/core/constants"
-  "$DIR_CLIENT/core/contexts"
-  "$DIR_CLIENT/core/forms"
-  "$DIR_CLIENT/core/hooks"
-  "$DIR_CLIENT/core/paperwork"
-  "$DIR_CLIENT/core/store"
-  "$DIR_CLIENT/core/uiFactory"
-  "$DIR_CLIENT/features"
-  "$DIR_CLIENT/features/layout"
-  "$DIR_CLIENT/features/_"
-  "$DIR_CLIENT/common"
-  "$DIR_CLIENT/common/components"
-  "$DIR_CLIENT/common/components/buttons"
-  "$DIR_CLIENT/common/components/spinners"
-  "$DIR_CLIENT/common/components/SVGs"
-  "$DIR_CLIENT/common/components/HOC"
-  "$DIR_CLIENT/common/components/forms"
-  "$DIR_CLIENT/common/components/dropMenu"
-  "$DIR_CLIENT/common/components/shapes"
-  "$DIR_CLIENT/common/components/elements"
-  "$DIR_CLIENT/common/types"
-  "$DIR_CLIENT/common"
-  "$DIR_CLIENT/styles"
-  "$DIR_CLIENT/styles/tokens"
-)
-
-for dir in "${DIRS[@]}"; do
-  mkdir -p "$dir"
-done
-
-touch $DIR_CLIENT/middleware.ts
-
-cat > "$DIR_CLIENT/middleware.ts" <<EOF 
-import { NextRequest, NextResponse } from "next/server";
-
-const shutBrowser = async (req: NextRequest) => {
-  if (req.nextUrl.pathname.endsWith(".js.map"))
-    return new Response(null, { status: 204 });
-
-  return NextResponse.next();
-};
-
-export default shutBrowser;
-EOF
-
-touch $DIR_CLIENT/styles/t.css
-touch $DIR_CLIENT/styles/globals.scss
-
-cat > "$DIR_CLIENT/styles/t.css" <<EOF
-@import "tailwindcss";
-EOF
-cat > "$DIR_CLIENT/styles/globals.scss" <<EOF
-@use "./t.css";
-EOF
+cp -r /home/ninja/scaffolds/client/. "$DIR_CLIENT/"
 
 cat > apps/client/next.config.ts <<EOF
 import type { NextConfig } from "next";
@@ -115,38 +58,6 @@ module.exports = {
   exportType: "default",
 };
 EOF
-
-cat > apps/client/src/app/layout <<'EOF' 
-import type { Metadata } from "next";
-import "../styles/globals.css";
-import { Fira_Code } from "next/font/google";
-
-const fira_code = Fira_Code({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: "Next PERN courses",
-  description: "Next PERN App for courses development",
-  icons: {
-    icon: "/favicon.svg",
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={`${fira_code.className} antialiased`}>{children}</body>
-    </html>
-  );
-}
-EOF 
 
 }
 
