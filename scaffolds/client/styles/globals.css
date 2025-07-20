@@ -1,0 +1,4 @@
+@import "tailwindcss";
+.tb {
+  @apply border-[3px] border-[whitesmoke];
+}

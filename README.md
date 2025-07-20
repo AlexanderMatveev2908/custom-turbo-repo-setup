@@ -1,5 +1,18 @@
 # CUSTOM TURBO-REPO SETUP 🚀
 
+## IMPORTANT ☢️
+
+The folder of repo named **scaffolds** should be copied at root of your home to make script work properly and generate pre filled src.
+To be sure it is in right position the command
+
+```bash
+pwd
+```
+
+should return as result `/home/<your linux username>/scaffolds`.
+
+## Info ℹ️
+
 I wrote this script after using Turborepo for the first time in one of my learning projects.
 Before that, I often duplicated logic between the client and server, which led to redundant code and occasional desync errors in shared types or data.
 
