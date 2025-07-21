@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AppEventT, ErrApiT } from "@/common/types/api";
+import { ErrApiT } from "@/common/types/api";
 import { toastSlice } from "@/features/layout/components/Toast/slices";
 import { __cg } from "@shared/first/lib/logger";
 import { isStr } from "@shared/first/lib/validators.js";
@@ -27,7 +27,7 @@ export const useErrAPI = () => {
         dispatch(
           toastSlice.actions.open({
             msg: isStr(data?.msg) ? data.msg! : "Ops something went wrong ❌",
-            type: AppEventT.ERR,
+            type: "ERR",
           })
         );
 

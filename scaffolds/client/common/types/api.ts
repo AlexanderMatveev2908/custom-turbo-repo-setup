@@ -6,17 +6,12 @@ import {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export enum TagsAPI {
+export enum TagAPI {
   TEST = "TEST",
+  WAKE_UP = "WAKE_UP",
 }
 
-export enum AppEventT {
-  OK = "OK",
-  INFO = "INFO",
-  WARN = "WARN",
-  ERR = "ERR",
-  NONE = "NONE",
-}
+export type AppEventT = "OK" | "INFO" | "WARN" | "ERR" | "NONE";
 
 export type ResApiT<T> = {
   data: {
@@ -24,6 +19,14 @@ export type ResApiT<T> = {
     status?: number;
   } & T;
 };
+
+export type ReqApiT<T extends Record<string, any> | void> = T extends void
+  ? {
+      _?: number;
+    }
+  : {
+      _?: number;
+    } & T;
 
 export type UnwrappedResApiT<T extends void | Record<string, any>> =
   T extends void

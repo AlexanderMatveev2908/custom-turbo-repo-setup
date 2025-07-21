@@ -1,11 +1,11 @@
-import { AppEventT, UnwrappedResApiT } from "@/common/types/api";
+import { UnwrappedResApiT } from "@/common/types/api";
 import { __cg } from "@shared/first/lib/logger.js";
 import { isStr } from "@shared/first/lib/validators.js";
 import { useCallback, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useErrAPI } from "./useErrAPI";
 import { toastSlice } from "@/features/layout/components/Toast/slices";
-import { useWrapListener } from "../ui/useWrapListener";
+import { useWrapListener } from "../etc/useWrapListener";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type Params<T extends Record<string, any> | void> = {
@@ -49,7 +49,7 @@ export const useWrapQuery = <T extends Record<string, any> | void>({
         dispatch(
           toastSlice.actions.open({
             msg: isStr(data?.msg) ? data!.msg! : "Things went good ✅",
-            type: AppEventT.OK,
+            type: "OK",
           })
         );
       }

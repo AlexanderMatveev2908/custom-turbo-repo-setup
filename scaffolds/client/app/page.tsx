@@ -1,11 +1,14 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
+import ShadowBtn from "@/common/components/buttons/ShadowBtn";
+import WrapCSR from "@/common/components/HOC/pageWrappers/WrapCSR";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
 import { testSliceAPI } from "@/features/test/slices/api";
 import { __cg } from "@shared/first/lib/logger.js";
-import type { FC } from "react";
+import { isStr } from "@shared/first/lib/validators.js";
+import { type FC } from "react";
 
 const Home: FC = () => {
   const res = testSliceAPI.useGetHelloQuery();
@@ -27,18 +30,29 @@ const Home: FC = () => {
   };
 
   return (
-    <div className="w-full h-full min-h-screen flex justify-center items-center gap-20">
-      <span className="text-3xl font-bold text-neutral-200">
-        Script worked ✌🏽
-      </span>
+    <WrapCSR
+      {...{
+        isLoading: res.isLoading,
+        isApiOk: isStr(res.data?.msg),
+        throwErr: true,
+      }}
+    >
+      <div className="w-full h-full min-h-screen flex flex-col justify-center items-center gap-20">
+        <span className="text-3xl font-bold text-neutral-200">
+          Script worked ✌🏽
+        </span>
 
-      <button
-        onClick={handleClick}
-        className="py-2 px-6 rounded-xl w-[300px] border-2 border-white text-xl text-white"
-      >
-        Click me
-      </button>
-    </div>
+        <div className="w-[250px]">
+          <ShadowBtn
+            {...{
+              handleClick,
+              label: "click me",
+              act: "OK",
+            }}
+          />
+        </div>
+      </div>
+    </WrapCSR>
   );
 };
 

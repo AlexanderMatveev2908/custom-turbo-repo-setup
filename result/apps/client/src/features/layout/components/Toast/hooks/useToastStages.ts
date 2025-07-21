@@ -3,7 +3,7 @@ import { toastSlice } from "../slices";
 import { useCallback, useEffect, useRef } from "react";
 import { DispatchT } from "@/core/store";
 import { ToastStateT } from "../types";
-import { useWrapListener } from "@/core/hooks/ui/useWrapListener";
+import { useWrapListener } from "@/core/hooks/etc/useWrapListener";
 
 export const useToastStages = ({
   dispatch,

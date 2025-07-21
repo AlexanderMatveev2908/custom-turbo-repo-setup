@@ -9,7 +9,7 @@ import {
 import { useErrAPI } from "./useErrAPI";
 import { toastSlice } from "@/features/layout/components/Toast/slices";
 import { isStr } from "@shared/first/lib/validators.js";
-import { AppEventT, ErrApiT } from "@/common/types/api";
+import { ErrApiT } from "@/common/types/api";
 
 export const useWrapMutation = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export const useWrapMutation = () => {
           dispatch(
             toastSlice.actions.open({
               msg: isStr(data?.msg) ? data.msg! : "Things went good ✅",
-              type: AppEventT.OK,
+              type: "OK",
             })
           );
 

@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useHydration } from "./useHydration";
+import { useHydration } from "../ui/useHydration";
 
 export const useWrapListener = () => {
   const { isHydrated } = useHydration();

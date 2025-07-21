@@ -1,11 +1,11 @@
 handle_dirs_client(){
 
-yes | rm -rf apps/client/public/* apps/client/src/app/favicon.ico \
+rm -rf apps/client/public/{*,.*}(N) apps/client/src/app/favicon.ico \
 apps/client/src/app/globals.css
 
 DIR_CLIENT="apps/client/src"
 
-yes | cp -r /home/ninja/scaffolds/client/. "$DIR_CLIENT/"
+yes | cp -rf /home/ninja/scaffolds/client/. "$DIR_CLIENT/"
 
 cat > apps/client/next.config.ts <<EOF
 import type { NextConfig } from "next";
@@ -60,3 +60,4 @@ module.exports = {
 EOF
 
 }
+

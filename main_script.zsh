@@ -23,7 +23,9 @@ yt() {
   handle_dirs_server && \
   echo "✅ generated server dirs" && \
   generate_docker && \
-  echo "✅ generated docker files"
+  echo "✅ generated docker files" && \
+  generate_workflows && \
+  echo "✅ generated workflow"
 
   echo "did stuff ✅✅✅"
 }
