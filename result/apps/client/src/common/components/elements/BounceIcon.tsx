@@ -3,14 +3,15 @@
 
 import type { FC } from "react";
 import { easeInOut, motion } from "framer-motion";
-import { CircleAlert } from "lucide-react";
 import { css, SerializedStyles } from "@emotion/react";
+import { IconType } from "react-icons";
 
 type PropsType = {
   $customCSS: SerializedStyles;
+  Svg: IconType;
 };
 
-const BounceErr: FC<PropsType> = ({ $customCSS }) => {
+const BounceIcon: FC<PropsType> = ({ $customCSS, Svg }) => {
   return (
     <motion.div
       className="w-full flex justify-center"
@@ -21,8 +22,7 @@ const BounceErr: FC<PropsType> = ({ $customCSS }) => {
         scaleY: [0.4, 1.4, 0.7, 1.2, 0.95, 1],
       }}
     >
-      <CircleAlert
-        className="text-red-600"
+      <Svg
         css={css`
           ${$customCSS}
         `}
@@ -31,4 +31,4 @@ const BounceErr: FC<PropsType> = ({ $customCSS }) => {
   );
 };
 
-export default BounceErr;
+export default BounceIcon;

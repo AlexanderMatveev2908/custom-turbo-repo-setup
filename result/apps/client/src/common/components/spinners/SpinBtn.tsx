@@ -8,7 +8,7 @@ import { easeInOut, motion } from "framer-motion";
 import { css } from "@emotion/react";
 import { resp } from "@/core/lib/style";
 import { AppEventT } from "@/common/types/api";
-import { $appClr } from "@/core/uiFactory/style";
+import { $argClr } from "@/core/uiFactory/style";
 
 type PropsType = {
   act?: AppEventT;
@@ -17,7 +17,7 @@ type PropsType = {
 const SpinBtn: FC<PropsType> = ({ act = "NONE" }) => {
   const ids = useMemo(() => Array.from({ length: 4 }, () => v4()), []);
 
-  const $clr = $appClr[act as keyof typeof $appClr];
+  const $clr = $argClr[act as keyof typeof $argClr];
 
   return (
     <div className="flex gap-5 items-center">

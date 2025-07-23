@@ -1,4 +1,4 @@
-export const $appClr = {
+export const $argClr = {
   OK: "var(--green__600)",
   INFO: "var(--blue__600)",
   WARN: "var(--yellow__600)",

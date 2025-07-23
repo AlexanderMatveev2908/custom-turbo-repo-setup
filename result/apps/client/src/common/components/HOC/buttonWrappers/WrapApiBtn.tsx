@@ -2,7 +2,7 @@
 "use client";
 
 import type { FC, ReactNode } from "react";
-import SpinBtn from "../spinners/SpinBtn";
+import SpinBtn from "../../spinners/SpinBtn";
 import { AppEventT } from "@/common/types/api";
 
 type PropsType = {
@@ -11,7 +11,7 @@ type PropsType = {
   children: ReactNode;
 };
 
-const WrapBtn: FC<PropsType> = ({ isLoading, act = "NONE", children }) => {
+const WrapApiBtn: FC<PropsType> = ({ isLoading, act = "NONE", children }) => {
   return isLoading ? (
     <div className="w-full flex justify-center">
       <SpinBtn {...{ act }} />
@@ -21,4 +21,4 @@ const WrapBtn: FC<PropsType> = ({ isLoading, act = "NONE", children }) => {
   );
 };
 
-export default WrapBtn;
+export default WrapApiBtn;

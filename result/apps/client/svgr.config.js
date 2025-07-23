@@ -2,28 +2,24 @@
 module.exports = {
   typescript: true,
   icon: true,
+  expandProps: "end",
+  exportType: "default",
+  dimensions: false,
   svgProps: {
     "aria-hidden": "true",
     fill: "currentColor",
     stroke: "currentColor",
   },
-  expandProps: "end",
-  replaceAttrValues: {
-    "#000": "currentColor",
-    "#000000": "currentColor",
-    black: "currentColor",
-    "#fff": "currentColor",
-    "#ffffff": "currentColor",
-    white: "currentColor",
-    inherit: "currentColor",
-
-    "stroke:#000": "stroke:currentColor",
-    "stroke:#000000": "stroke:currentColor",
-    "stroke:black": "stroke:currentColor",
-    "stroke:#fff": "stroke:currentColor",
-    "stroke:#ffffff": "stroke:currentColor",
-    "stroke:white": "stroke:currentColor",
+  svgo: true,
+  svgoConfig: {
+    plugins: [
+      { name: "removeAttrs", params: { attrs: ["fill", "stroke"] } },
+      { name: "inlineStyles", params: { onlyMatchedOnce: false } },
+      { name: "removeStyleElement", active: true },
+      { name: "removeEmptyContainers", active: true },
+      { name: "removeUselessDefs", active: true },
+      { name: "convertColors", active: true },
+      { name: "cleanupAttrs", active: true },
+    ],
   },
-  dimensions: false,
-  exportType: "default",
 };

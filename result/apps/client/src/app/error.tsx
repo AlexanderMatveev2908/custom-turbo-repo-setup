@@ -3,11 +3,10 @@
 "use client";
 
 import type { FC } from "react";
-import { css } from "@emotion/react";
-import { resp } from "@/core/lib/style";
-import BounceErr from "@/common/components/elements/CounceErr";
-import ShadowBtn from "@/common/components/buttons/ShadowBtn";
 import { __cg } from "@shared/first/lib/logger.js";
+import { CircleAlert } from "lucide-react";
+import WrapEventPage from "@/common/components/HOC/pageWrappers/WrapEventPage";
+import WrapShadow from "@/common/components/HOC/buttonWrappers/WrapShadow";
 
 type PropsType = {
   error: any;
@@ -18,37 +17,24 @@ const Err: FC<PropsType> = ({ error: err }: PropsType) => {
   __cg("err", err);
 
   return (
-    <div className="w-full min-h-[75vh] flex flex-col items-center justify-center gap-10 sm:gap-16">
-      <BounceErr
-        {...{
-          $customCSS: css`
-            width: 175px;
-            height: 175px;
-
-            ${resp("sm")} {
-              width: 300px;
-              height: 300px;
-            }
-          `,
-        }}
-      />
-
-      <div className="w-full flex justify-center max-w-[90%] sm:max-w-[75%]">
-        <span className="text-gray-300  txt__lg">
-          {err instanceof Error ? err?.message : err?.data?.msg ?? err?.msg}
-        </span>
-      </div>
-
+    <WrapEventPage
+      {...{
+        act: "ERR",
+        msg: err?.msg ?? err?.data?.msg ?? err?.message ?? "Unmown error...❌",
+        Svg: CircleAlert,
+      }}
+    >
       <div className="w-[250px]">
-        <ShadowBtn
+        <WrapShadow
           {...{
-            handleClick: () => location.reload(),
-            label: "Refresh",
+            wrapper: "html_button",
             act: "ERR",
+            label: "Refresh",
+            handleClick: () => location.reload(),
           }}
         />
       </div>
-    </div>
+    </WrapEventPage>
   );
 };
 

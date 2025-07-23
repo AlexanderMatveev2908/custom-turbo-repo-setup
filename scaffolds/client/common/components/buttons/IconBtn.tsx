@@ -4,7 +4,7 @@
 import { AppEventT } from "@/common/types/api";
 import { css } from "@emotion/react";
 import type { FC } from "react";
-import { $appClr } from "@/core/uiFactory/style";
+import { $argClr } from "@/core/uiFactory/style";
 import { IconType } from "react-icons";
 
 type PropsType = {
@@ -20,7 +20,7 @@ const IconBtn: FC<PropsType> = ({
   Svg,
   isEnabled = true,
 }) => {
-  const $clr = $appClr[act];
+  const $clr = $argClr[act];
 
   return (
     <button

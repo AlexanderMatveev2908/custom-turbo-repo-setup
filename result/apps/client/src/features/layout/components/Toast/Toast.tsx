@@ -2,7 +2,7 @@
 "use client";
 
 import { getToastState } from "./slices";
-import { $appClr } from "@/core/uiFactory/style";
+import { $argClr } from "@/core/uiFactory/style";
 import { AnimatePresence, motion } from "framer-motion";
 import { css } from "@emotion/react";
 import { resp } from "@/core/lib/style";
@@ -21,7 +21,7 @@ const Toast: FC = () => {
     dispatch,
     toastState,
   });
-  const clr = $appClr[toastState.toast.type ?? $appClr.NONE];
+  const clr = $argClr[toastState.toast.type ?? $argClr.NONE];
 
   return (
     <AnimatePresence>

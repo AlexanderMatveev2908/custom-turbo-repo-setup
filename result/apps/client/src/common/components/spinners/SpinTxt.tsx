@@ -4,7 +4,7 @@
 import type { FC } from "react";
 import { motion } from "framer-motion";
 import { css } from "@emotion/react";
-import { $appClr } from "@/core/uiFactory/style";
+import { $argClr } from "@/core/uiFactory/style";
 import { AppEventT } from "@/common/types/api";
 
 type PropsType = {
@@ -12,7 +12,7 @@ type PropsType = {
 };
 
 const SpinTxt: FC<PropsType> = ({ act = "NONE" }) => {
-  const $clr = $appClr[act];
+  const $clr = $argClr[act];
 
   return (
     <motion.div

@@ -1,1 +1,1 @@
-export const REG_FLOAT = /^\d+(\.\d+)?$/;
+export const REG_NUM = /^\d+(\.\d+)?$/;

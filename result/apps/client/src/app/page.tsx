@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 "use client";
 
-import ShadowBtn from "@/common/components/buttons/ShadowBtn";
+import WrapShadow from "@/common/components/HOC/buttonWrappers/WrapShadow";
 import WrapCSR from "@/common/components/HOC/pageWrappers/WrapCSR";
 import { useWrapMutation } from "@/core/hooks/api/useWrapMutation";
 import { useWrapQuery } from "@/core/hooks/api/useWrapQuery";
@@ -43,11 +43,14 @@ const Home: FC = () => {
         </span>
 
         <div className="w-[250px]">
-          <ShadowBtn
+          <WrapShadow
             {...{
-              handleClick,
-              label: "click me",
+              wrapper: "html_button",
               act: "OK",
+              label: "Click me",
+              handleClick,
+              // isLoading: true,
+              // isEnabled: false,
             }}
           />
         </div>

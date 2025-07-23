@@ -1,13 +1,13 @@
-handle_dirs_client(){
+handle_dirs_client() {
 
-rm -rf apps/client/public/{*,.*}(N) apps/client/src/app/favicon.ico \
-apps/client/src/app/globals.css
+  rm -rf apps/client/public/{*,.*}(N) apps/client/src/app/favicon.ico \
+    apps/client/src/app/globals.css
 
-DIR_CLIENT="apps/client/src"
+  DIR_CLIENT="apps/client/src"
 
-yes | cp -rf /home/ninja/scaffolds/client/. "$DIR_CLIENT/"
+  yes | cp -rf /home/ninja/scaffolds/client/. "$DIR_CLIENT/"
 
-cat > apps/client/next.config.ts <<EOF
+  cat > apps/client/next.config.ts <<EOF
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -26,38 +26,50 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 EOF
 
-touch apps/client/svgr.config.js 
-cat > apps/client/svgr.config.js <<EOF
+  touch apps/client/svgr.config.js
+  cat > apps/client/svgr.config.js <<EOF
 /** @type {import('@svgr/core').Config} */
 module.exports = {
   typescript: true,
   icon: true,
+  expandProps: "end",
+  exportType: "default",
+  dimensions: false,
   svgProps: {
     "aria-hidden": "true",
     fill: "currentColor",
     stroke: "currentColor",
   },
-  expandProps: "end",
-  replaceAttrValues: {
-    "#000": "currentColor",
-    "#000000": "currentColor",
-    black: "currentColor",
-    "#fff": "currentColor",
-    "#ffffff": "currentColor",
-    white: "currentColor",
-    inherit: "currentColor",
-
-    "stroke:#000": "stroke:currentColor",
-    "stroke:#000000": "stroke:currentColor",
-    "stroke:black": "stroke:currentColor",
-    "stroke:#fff": "stroke:currentColor",
-    "stroke:#ffffff": "stroke:currentColor",
-    "stroke:white": "stroke:currentColor",
+  svgo: true,
+  svgoConfig: {
+    plugins: [
+      { name: "removeAttrs", params: { attrs: ["fill", "stroke"] } },
+      { name: "inlineStyles", params: { onlyMatchedOnce: false } },
+      { name: "removeStyleElement", active: true },
+      { name: "removeEmptyContainers", active: true },
+      { name: "removeUselessDefs", active: true },
+      { name: "convertColors", active: true },
+      { name: "cleanupAttrs", active: true },
+    ],
   },
-  dimensions: false,
-  exportType: "default",
 };
 EOF
 
-}
+  touch apps/client/tailwind.config.ts
+  cat > apps/client/tailwind.config.ts <<EOF
+import type { Config } from "tailwindcss";
 
+const config: Config = {
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
+EOF
+}

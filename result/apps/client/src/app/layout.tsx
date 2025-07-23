@@ -13,8 +13,8 @@ const fira_code = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Next PERN courses",
-  description: "Next PERN App for courses development",
+  title: "Replace App name...",
+  description: "Fancy description app...",
   icons: {
     icon: "/favicon.svg",
   },
